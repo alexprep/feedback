@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: feedback-app
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn FeedbackProject.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: FeedbackProject.settings
+      - key: SECRET_KEY
+        value: your_super_secret_key
+      - key: DEBUG
+        value: False
